@@ -1,6 +1,9 @@
 require "rubygems"
 require "pp"
 
+# Quick and dirty benchmarking
+#
+#   quick(10) { sleep 0.1 }
 def quick(repetitions=100, &block)
   require 'benchmark'
   Benchmark.bmbm do |b|
@@ -9,8 +12,6 @@ def quick(repetitions=100, &block)
   nil
 end
 
-# Autocomplete, coloring and more.
-# http://pablotron.org/software/wirble/
 begin
   require 'wirble'
   Wirble.init
@@ -49,7 +50,6 @@ rescue LoadError => err
   warn "Couldn't load Wirble: #{err}"
 end
 
-# Nicer active record ouput. http://tagaholic.me/hirb/
 begin
   require "hirb"
   Hirb.enable
@@ -57,9 +57,9 @@ rescue LoadError => err
   warn "Couldn't load Hirb: #{err}"
 end
 
-# Method lookup
-# Usage: lp variable
-# http://github.com/oggy/looksee
+# Method lookup http://github.com/oggy/looksee
+#
+#   lp variable
 begin
   require 'looksee/shortcuts'
 rescue LoadError => err
@@ -73,7 +73,7 @@ class Object
     (obj.methods - obj.class.superclass.instance_methods).sort
   end
   
-  # print documentation
+  # Print documentation
   #
   #   ri 'Array#pop'
   #   Array.ri
@@ -84,11 +84,11 @@ class Object
       klass = self.kind_of?(Class) ? name : self.class.name
       method = [klass, method].compact.join('#')
     end
-    cmd = system("which fri") ? "fri" : "ri"
+    cmd = QRI_ENABLED ? "qri" : "ri"
     puts `#{cmd} '#{method}'`
   end
 end
-warn "Fast-RI not found (gem install fastri)" unless system("which fri")
+warn "Fast-RI not found (gem install fastri)" unless QRI_ENABLED = `which qri` != ''
 
 def copy(str)
   IO.popen('pbcopy', 'w') { |f| f << str.to_s }

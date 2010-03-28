@@ -22,6 +22,15 @@ export PS1="$RED\$(display_uncommon_user)$YELLOW\w$GREEN\$(git_branch)$WHITE$ "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 
+# make bash autocomplete with up arrow/down arrow
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+# readline settings
+bind "set completion-ignore-case on" 
+bind "set bell-style none" # No bell, because it's damn annoying
+bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
+
 alias grep="grep --color=auto"
 alias preview="open -a /Applications/Preview.app/"
 alias safari="open -a /Applications/Safari.app/"
@@ -40,6 +49,7 @@ alias ps?='ps ax | grep '
 alias fn='find . -name'
 alias hi='history | tail -20'
 alias du1='du -h -d 1'
+alias sd='svn diff > /tmp/svn.diff;mate /tmp/svn.diff'
 
 # open Textmate with only the dirs we normally want to work with
 alias e='mate `ls -Fa | grep -v .svn/ | grep -v .git/ | grep -v script/ | grep -v .DS_Store | grep -v _site/ | grep -v log/ | grep -v tmp/ | grep -v vendor/ | grep -v "\./"`'
@@ -57,13 +67,6 @@ alias rtp='rake db:test:prepare'
 alias au='script/autospec'
 alias auf='AUTOFEATURE=true script/autospec'
 
-# Diff
-alias sd='svn diff > /tmp/svn.diff;mate /tmp/svn.diff'
-
 # brute force 'rake db:test:prepare', if you're using cucumber rails_env:
 alias testreset='rake db:test:purge && rake db:test:prepare'
 alias rcup='rake --trace db:drop db:create db:migrate db:seed RAILS_ENV=cucumber'
-
-# make bash autocomplete with up arrow/down arrow
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
