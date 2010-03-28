@@ -8,5 +8,4 @@ defaults write com.apple.dock pinning -string end
 killall Dock
 
 # Maximize windows with ctrl+cmd+Z
-# http://tomafro.net/2009/11/zoom-keyboard-shortcut-for-os-x
 defaults write NSGlobalDomain NSUserKeyEquivalents '{"Zoom" = "@^Z"; "Zoom Window" = "@^Z"; }'
