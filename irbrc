@@ -13,6 +13,13 @@ def quick(repetitions=100, &block)
 end
 
 begin
+  require "ap"
+  Hirb.enable
+rescue LoadError => err
+  warn "Couldn't load awesome_print: #{err}"
+end
+
+begin
   require 'wirble'
   Wirble.init
   

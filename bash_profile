@@ -31,6 +31,13 @@ bind "set completion-ignore-case on"
 bind "set bell-style none" # No bell, because it's damn annoying
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
+# git stuff http://www.benmabey.com/2008/05/07/git-bash-completion-git-aliases/
+alias gco='git co'
+source ~/bin/git-completion.bash
+complete -o default -o nospace -F _git_checkout gco
+
+
+
 alias grep="grep --color=auto"
 alias preview="open -a /Applications/Preview.app/"
 alias safari="open -a /Applications/Safari.app/"
@@ -41,7 +48,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias ls='ls -GhF'
 alias ll='ls -GlhF'
-alias l='ls -GlAhF'
+alias l='ls -GlAhFtr'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ?='echo $?'
