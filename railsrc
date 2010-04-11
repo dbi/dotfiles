@@ -1,0 +1,11 @@
+begin
+  require "hirb"
+  Hirb.enable
+rescue LoadError => err
+  warn "Couldn't load Hirb: #{err}"
+end
+
+def sql_log(verbose=true)
+  ActiveRecord::Base.logger = verbose ? Logger.new(STDOUT) : RAILS_DEFAULT_LOGGER
+  reload!
+end

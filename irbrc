@@ -14,7 +14,6 @@ end
 
 begin
   require "ap"
-  Hirb.enable
 rescue LoadError => err
   warn "Couldn't load awesome_print: #{err}"
 end
@@ -55,13 +54,6 @@ begin
   Wirble.colorize
 rescue LoadError => err
   warn "Couldn't load Wirble: #{err}"
-end
-
-begin
-  require "hirb"
-  Hirb.enable
-rescue LoadError => err
-  warn "Couldn't load Hirb: #{err}"
 end
 
 # Method lookup http://github.com/oggy/looksee
