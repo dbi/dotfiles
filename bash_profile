@@ -32,11 +32,10 @@ bind "set bell-style none" # No bell, because it's damn annoying
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
 # git stuff http://www.benmabey.com/2008/05/07/git-bash-completion-git-aliases/
-alias gco='git co'
-source ~/bin/git-completion.bash
+source ~/.dotfiles/autocomplete/git-completion.bash
 complete -o default -o nospace -F _git_checkout gco
 
-
+source ~/.dotfiles/autocomplete/rake_cap_bash_autocomplete.sh
 
 alias grep="grep --color=auto"
 alias preview="open -a /Applications/Preview.app/"
@@ -57,6 +56,7 @@ alias fn='find . -name'
 alias hi='history | tail -20'
 alias du1='du -h -d 1'
 alias sd='svn diff > /tmp/svn.diff;mate /tmp/svn.diff'
+alias gco='git co'
 
 # open Textmate with only the dirs we normally want to work with
 alias e='mate `ls -Fa | grep -v .svn/ | grep -v .git/ | grep -v script/ | grep -v .DS_Store | grep -v _site/ | grep -v log/ | grep -v tmp/ | grep -v vendor/ | grep -v "\./"`'
