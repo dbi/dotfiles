@@ -29,7 +29,7 @@ File.open("spec/spec.opts", 'w') {|f|
 }
 puts "      create spec/spec.opts"
 
-File.open("spec/first.spec", 'w') {|f|
+File.open("spec/first_spec.rb", 'w') {|f|
   f.write(%{
 describe "First test" do
 
@@ -40,4 +40,4 @@ describe "First test" do
 end
 }.lstrip)
 }
-puts "      create spec/first.spec"
+puts "      create spec/first_spec.rb"

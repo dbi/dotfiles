@@ -2,11 +2,11 @@
 
 # kan förbättras med delar från projekten: rspactor & rerun
 # men främst http://www.rubyinside.com/watchr-generic-autotest-alternativ-2511.html
-
-# kolla watchr
+# kolla watchr, spork, bolt, rerun, watcher, rspactor
 
 # TODO: stacktraces can be alot better
 # TODO: use fssm
+# TOOD: gives no output if no _spec.rb files are found.
 
 require "rubygems"
 require "spec"
@@ -47,11 +47,11 @@ begin
       
       puts "#{`clear`}\n#{LOADING_MESSAGE}"
       
-      # alternative to `spec spec/*.spec --options spec/spec.opts`
+      # alternative to `spec spec/*_spec.rb --options spec/spec.opts`
       pid = fork do
       
         spec_result = Output::FakedTerminalStringIO.new
-        arguments = Dir["spec/**/*.spec"].concat ["--options", "spec/spec.opts"]
+        arguments = Dir["spec/**/*_spec.rb"].concat ["--options", "spec/spec.opts"]
         options = Spec::Runner::OptionParser.parse(arguments, $stderr, spec_result)
         spec_stdout = capture_stdout do
           Spec::Runner::CommandLine.run(options)

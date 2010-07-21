@@ -1,6 +1,9 @@
 require "rubygems"
 require "pp"
 
+puts "#{RUBY_VERSION} (#{RUBY_RELEASE_DATE} patchlevel #{RUBY_PATCHLEVEL}) #{RUBY_PLATFORM}"
+IRB.conf[:PROMPT_MODE] = :DEFAULT
+
 # Quick and dirty benchmarking
 #
 #   quick(10) { sleep 0.1 }
@@ -10,12 +13,6 @@ def quick(repetitions=100, &block)
     b.report {repetitions.times &block} 
   end
   nil
-end
-
-begin
-  require "ap"
-rescue LoadError => err
-  warn "Couldn't load awesome_print: #{err}"
 end
 
 begin
