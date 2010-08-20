@@ -1,7 +1,7 @@
 require "rubygems"
 require "pp"
 
-puts "#{RUBY_VERSION} (#{RUBY_RELEASE_DATE} patchlevel #{RUBY_PATCHLEVEL}) #{RUBY_PLATFORM}"
+puts "#{RUBY_VERSION} p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) #{RUBY_PLATFORM}"
 IRB.conf[:PROMPT_MODE] = :DEFAULT
 
 # Quick and dirty benchmarking

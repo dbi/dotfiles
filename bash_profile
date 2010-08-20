@@ -43,6 +43,8 @@ alias grep="grep --color=auto"
 alias preview="open -a /Applications/Preview.app/"
 alias safari="open -a /Applications/Safari.app/"
 alias firefox="open -a /Applications/Firefox.app/"
+alias gitx="open -a GitX ."
+alias t="term -t"
 
 # common
 alias cp='cp -i'
