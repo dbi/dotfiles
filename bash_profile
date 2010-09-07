@@ -45,7 +45,6 @@ alias safari="open -a /Applications/Safari.app/"
 alias firefox="open -a /Applications/Firefox.app/"
 alias gitx="open -a GitX ."
 alias t="term -t"
-alias gemdir="cd $(rvm gemdir)/gems"
 
 # common
 alias cp='cp -i'

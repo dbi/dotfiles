@@ -41,3 +41,18 @@ end
 }.lstrip)
 }
 puts "      create spec/first_spec.rb"
+
+File.open(".gitignore", 'w') {|f|
+  f.write(%{
+.bundle
+.rvmrc
+}.lstrip)
+}
+puts "      create .gitignore"
+
+File.open("Gemfile", 'w') {|f|
+  f.write(%{
+source :gemcutter
+}.lstrip)
+}
+puts "      create Gemfile"
