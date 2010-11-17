@@ -5,6 +5,9 @@ defaults write com.apple.dock autohide -boolean true
 defaults write com.apple.Dock orientation -string top
 defaults write com.apple.dock tilesize -int 1
 defaults write com.apple.dock pinning -string end
+
+echo "[ok] Disable spaces animation"
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
 killall Dock
 
 echo "[ok] Maximize windows with ctrl+cmd+Z and disable cmd+Q for Terminal.app"
