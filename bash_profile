@@ -6,6 +6,10 @@ function git_branch {
   fi
 }
 
+function gr {
+  git log origin/master..HEAD
+}
+
 function display_uncommon_user {
   if [ $LOGNAME != "david.billskog" -a $LOGNAME != "billskog" ]; then
   	echo "$LOGNAME "
@@ -67,6 +71,7 @@ alias e='mate `ls -Fa | grep -v .svn/ | grep -v .git/ | grep -v script/ | grep -
 alias er='mate README app/ config/ db/ lib/ public/ test/ spec/ vendor/plugins .gems '
 
 # Rails
+alias r='rails'
 alias ss='script/server'
 alias sc='script/console'
 alias sg='script/generate'
