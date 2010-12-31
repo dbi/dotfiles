@@ -15,6 +15,13 @@ def quick(repetitions=100, &block)
   nil
 end
 
+def bench
+  start = Time.now
+  result = yield
+  puts sprintf "Total: %.2fs", Time.now - start
+  result
+end
+
 begin
   require 'wirble'
   Wirble.init

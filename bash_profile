@@ -86,3 +86,7 @@ alias auf='AUTOFEATURE=true script/autospec'
 # brute force 'rake db:test:prepare', if you're using cucumber rails_env:
 alias testreset='rake db:test:purge && rake db:test:prepare'
 alias rcup='rake --trace db:drop db:create db:migrate db:seed RAILS_ENV=cucumber'
+
+# RVM
+alias cdgems="pushd '$GEM_HOME/gems'"
+alias gemdir="cd $(rvm gemdir)/gems"
