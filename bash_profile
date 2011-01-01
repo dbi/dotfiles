@@ -28,6 +28,8 @@ export PS1="$RED\$(display_uncommon_user)$YELLOW\w$GREEN\$(git_branch)$WHITE$ "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 
+export EDITOR=mvim
+
 # make bash autocomplete with up arrow/down arrow
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
