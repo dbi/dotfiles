@@ -69,6 +69,12 @@ rescue LoadError => err
   warn "Couldn't load Looksee: #{err}"
 end
 
+begin
+  require 'interactive_editor'
+rescue LoadError => err
+  warn "Couldn't load interactive_editor: #{err}"
+end
+
 # from: http://github.com/ryanb/dotfiles/
 class Object
   # list methods which aren't in superclass
