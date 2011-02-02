@@ -29,4 +29,4 @@ tell me to activate
 set answer to jot_dialog for {"Jot:"}
 set answer to replace_chars(answer, "'", "")
 
-do shell script "echo '\n# " & answer & "' >> ~/Dropbox/reference.txt"
+do shell script "echo '\n# " & answer & "' >> ~/Dropbox/notes/reference.txt"
