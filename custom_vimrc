@@ -3,6 +3,14 @@ if has("gui_running")
   set guioptions=aAc " no scrollbars
   set guioptions-=T
   colorscheme billskog
+  set guifont=Monaco:h13
+
+  " http://vimcasts.org/episodes/show-invisibles/
+  " Use the same symbols as TextMate for tabstops and EOLs
+  "set listchars=tab:▸\ ,eol:¬
+  set listchars=tab:»-,trail:·,extends:@,nbsp:≠
+  "set listchars=tab:>-,trail:+,extends:@,nbsp:% "non gui enabled
+  set list
 endif
 
 map ö :
@@ -15,13 +23,6 @@ imap <C-l> <Space>=><Space>"
 " convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
 nmap <C-k> lbi:<Esc>E
-
-" http://vimcasts.org/episodes/show-invisibles/
-" Use the same symbols as TextMate for tabstops and EOLs
-"set listchars=tab:▸\ ,eol:¬
-set listchars=tab:»-,trail:·,extends:@,nbsp:≠
-"set listchars=tab:>-,trail:+,extends:@,nbsp:% "non gui enabled
-set list
 
 "Disable arrow keys
 "http://www.questionhub.com/SuperUser/210853
