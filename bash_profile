@@ -1,3 +1,7 @@
+function gr {
+  git log origin/master..HEAD
+}
+
 # http://railstips.org/blog/archives/2009/02/02/bedazzle-your-bash-prompt-with-git-info/
 function git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
@@ -6,12 +10,8 @@ function git_branch {
   fi
 }
 
-function gr {
-  git log origin/master..HEAD
-}
-
 function display_uncommon_user {
-  if [ $LOGNAME != "david.billskog" -a $LOGNAME != "billskog" ]; then
+  if [ $LOGNAME != "david.billskog" -a $LOGNAME != "billskog" -a $LOGNAME != "dbi" ]; then
   	echo "$LOGNAME "
   fi
 }
@@ -22,13 +22,12 @@ YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 CYAN="\[\033[0;36m\]"
 
-#export PS1="$WHITE[\u@$CYAN\h $YELLOW\w$WHITE] $"
 export PS1="$RED\$(display_uncommon_user)$YELLOW\w$GREEN\$(git_branch)$WHITE$ "
 
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 
-export EDITOR=mvim
+export EDITOR=vim
 
 # make bash autocomplete with up arrow/down arrow
 bind '"\e[A":history-search-backward'
@@ -89,6 +88,3 @@ alias auf='AUTOFEATURE=true script/autospec'
 alias testreset='rake db:test:purge && rake db:test:prepare'
 alias rcup='rake --trace db:drop db:create db:migrate db:seed RAILS_ENV=cucumber'
 
-# RVM
-alias cdgems="pushd '$GEM_HOME/gems'"
-alias gemdir="cd $(rvm gemdir)/gems"
