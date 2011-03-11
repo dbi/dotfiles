@@ -9,3 +9,7 @@ def sql_log(verbose=true)
   ActiveRecord::Base.logger = verbose ? Logger.new(STDOUT) : RAILS_DEFAULT_LOGGER
   reload!
 end
+
+def route(path, data={})
+  ActionController::Routing::Routes.recognize_path path, data
+end
