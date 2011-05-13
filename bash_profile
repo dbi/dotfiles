@@ -38,6 +38,9 @@ bind "set completion-ignore-case on"
 bind "set bell-style none" # No bell, because it's damn annoying
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
+# vim bindings in bash
+set -o vi
+
 # git stuff http://www.benmabey.com/2008/05/07/git-bash-completion-git-aliases/
 source ~/.dotfiles/autocomplete/git-completion.bash
 complete -o default -o nospace -F _git_checkout gco

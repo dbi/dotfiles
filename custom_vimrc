@@ -20,6 +20,8 @@ let mapleader = " "
 " bind control-l to hashrocket
 imap <C-l> <Space>=><Space>"
 
+map <Leader>t :CommandT<CR>
+
 " convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
 nmap <C-k> lbi:<Esc>E
@@ -69,5 +71,10 @@ if exists("+showtabline")
   set tabline=%!MyTabLine()
 endif
 
-set hlsearch
+set nohlsearch
 
+" Autosave on lost focus
+autocmd FocusLost * :wall
+
+" Share clipboard
+set clipboard=unnamed
