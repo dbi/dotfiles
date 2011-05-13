@@ -56,7 +56,7 @@ if exists("+showtabline")
       let file = bufname(buflist[winnr - 1])
       let file = fnamemodify(file, ':p:t')
       if file == ''
-        let file = '[No Name]'
+        let file = '<unsaved>'
       endif
       let s .= ' ' . file . ' '
       let s .= '%* '
@@ -65,7 +65,7 @@ if exists("+showtabline")
     let s .= '%T%#TabLineFill#%='
     return s
   endfunction
-  set stal=2
+  set stal=1
   set tabline=%!MyTabLine()
 endif
 
