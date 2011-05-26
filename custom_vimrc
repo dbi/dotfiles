@@ -1,28 +1,28 @@
 if has("gui_running")
-  set lines=58 columns=205
   set guioptions=aAc " no scrollbars
   set guioptions-=T
-  colorscheme billskog
   set guifont=Monaco:h13
-
-  " http://vimcasts.org/episodes/show-invisibles/
-  " Use the same symbols as TextMate for tabstops and EOLs
-  "set listchars=tab:▸\ ,eol:¬
-  set listchars=tab:»-,trail:·,extends:@,nbsp:≠
-  "set listchars=tab:>-,trail:+,extends:@,nbsp:% "non gui enabled
-  set list
+  set fuoptions=maxvert,maxhorz
+  colorscheme billskog
 endif
+
+" http://vimcasts.org/episodes/show-invisibles/
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:»-,trail:·,extends:@,nbsp:≠
+set list
 
 map ö :
 
 let mapleader = " "
 
 " bind control-l to hashrocket
-imap <C-l> <Space>=><Space>"
+imap <C-l> <Space>=><Space>
 
 map <Leader>t :CommandT<CR>
 map <Leader>n :FufBuffer<CR>
 map <Leader>b :b!#<CR>
+let g:fuf_buffer_keyDelete = '<C-x>'
+map <silent> å <C-]>
 
 " convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
@@ -35,6 +35,9 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 
+" CommandT
+let g:CommandTMaxHeight=20
+
 "Shortcuts
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -42,8 +45,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 "Tabswitch shortcuts
-map <D-A-Left> :tabprevious<CR>
-map <D-A-Right> :tabnext<CR>
+map <silent> <D-A-Left> :tabprevious<CR>
+map <silent> <D-A-Right> :tabnext<CR>
 
 " Nice tabs
 if exists("+showtabline")
@@ -84,3 +87,9 @@ set clipboard=unnamed
 
 " Word wrap
 set wrap
+
+" Rails config
+autocmd User Rails set wildignore+=public/assets/**,vendor/**
+autocmd User Rails map <silent> <Leader>w m`:%s/\s\+$//<CR>``
+autocmd User Rails map <silent> <Leader>s :vsplit<CR>:A<CR>
+autocmd User Rails map <silent> <Leader>d :q<CR>:vsplit<CR>:A<CR>
