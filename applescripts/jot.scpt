@@ -28,5 +28,6 @@ end jot_dialog
 tell me to activate
 set answer to jot_dialog for {"Jot:"}
 set answer to replace_chars(answer, "'", "")
+set answer to replace_chars(answer, ASCII character 13, ASCII character 10)
 
 do shell script "echo '\n# " & answer & "' >> ~/Dropbox/notes/reference.txt"
