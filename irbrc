@@ -1,8 +1,14 @@
 require "rubygems"
-require "pp"
 
 puts "#{RUBY_VERSION} p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) #{RUBY_PLATFORM}"
 IRB.conf[:PROMPT_MODE] = :DEFAULT
+
+# Hack to load gems outside of bundler
+#
+# https://gist.github.com/794915
+if defined?(::Bundler)
+  $LOAD_PATH.concat Dir.glob("#{ENV['rvm_ruby_global_gems_path']}/gems/*/lib")
+end
 
 # Quick and dirty benchmarking
 #
@@ -10,22 +16,26 @@ IRB.conf[:PROMPT_MODE] = :DEFAULT
 def quick(repetitions=100, &block)
   require 'benchmark'
   Benchmark.bmbm do |b|
-    b.report {repetitions.times &block} 
+    b.report {repetitions.times &block}
   end
   nil
 end
 
-def bench
+# Time command execution
+#
+#   time { sleep 1 }
+def time
   start = Time.now
   result = yield
   puts sprintf "Total: %.2fs", Time.now - start
   result
 end
 
+# Wirble https://github.com/blackwinter/wirble
 begin
   require 'wirble'
   Wirble.init
-  
+
   colors = Wirble::Colorize.colors.merge({
     :comma              => :light_gray,
     :refers             => :light_gray,
@@ -53,7 +63,7 @@ begin
     :class              => :green,
     :range              => :red,
   })
-  
+
   Wirble::Colorize.colors = colors
   Wirble.colorize
 rescue LoadError => err
@@ -64,45 +74,30 @@ end
 #
 #   lp variable
 begin
-  require 'looksee/shortcuts'
+  require 'looksee'
 rescue LoadError => err
   warn "Couldn't load Looksee: #{err}"
 end
 
+# Interactive Editor https://github.com/jberkel/interactive_editor
+#
+#   vim
 begin
   require 'interactive_editor'
 rescue LoadError => err
   warn "Couldn't load interactive_editor: #{err}"
 end
 
-# from: http://github.com/ryanb/dotfiles/
-class Object
-  # list methods which aren't in superclass
-  def local_methods(obj = self)
-    (obj.methods - obj.class.superclass.instance_methods).sort
-  end
-  
-  # Print documentation
-  #
-  #   ri 'Array#pop'
-  #   Array.ri
-  #   Array.ri :pop
-  #   arr.ri :pop
-  def ri(method = nil)
-    unless method && method =~ /^[A-Z]/ # if class isn't specified
-      klass = self.kind_of?(Class) ? name : self.class.name
-      method = [klass, method].compact.join('#')
-    end
-    cmd = QRI_ENABLED ? "qri" : "ri"
-    puts `#{cmd} '#{method}'`
-  end
-end
-warn "Fast-RI not found (gem install fastri)" unless QRI_ENABLED = `which qri` != ''
-
+# Copy string to clipboard
+#
+#   copy "hello"
 def copy(str)
   IO.popen('pbcopy', 'w') { |f| f << str.to_s }
 end
 
+# Copy irb history to clipboard
+#
+#   copy_history
 def copy_history
   history = Readline::HISTORY.entries
   index = history.rindex("exit") || -1
@@ -111,8 +106,12 @@ def copy_history
   copy content
 end
 
+# Paste clipboard as string
+#
+#   x = paste
 def paste
   `pbpaste`
 end
 
+# Automatically load .railsrc
 load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
