@@ -24,7 +24,7 @@ end
 # Time command execution
 #
 #   time { sleep 1 }
-def time
+def measure_time
   start = Time.now
   result = yield
   puts sprintf "Total: %.2fs", Time.now - start
@@ -94,6 +94,7 @@ end
 def copy(str)
   IO.popen('pbcopy', 'w') { |f| f << str.to_s }
 end
+
 
 # Copy irb history to clipboard
 #
