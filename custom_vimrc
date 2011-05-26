@@ -21,6 +21,8 @@ let mapleader = " "
 imap <C-l> <Space>=><Space>"
 
 map <Leader>t :CommandT<CR>
+map <Leader>n :FufBuffer<CR>
+map <Leader>b :b!#<CR>
 
 " convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
@@ -40,8 +42,8 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 "Tabswitch shortcuts
-map J :tabprevious<CR>
-map K :tabnext<CR>
+map <D-A-Left> :tabprevious<CR>
+map <D-A-Right> :tabnext<CR>
 
 " Nice tabs
 if exists("+showtabline")
@@ -71,6 +73,7 @@ if exists("+showtabline")
   set tabline=%!MyTabLine()
 endif
 
+set showtabline=0
 set nohlsearch
 
 " Autosave on lost focus
@@ -78,3 +81,6 @@ autocmd FocusLost * :wall
 
 " Share clipboard
 set clipboard=unnamed
+
+" Word wrap
+set wrap
