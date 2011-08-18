@@ -1,5 +1,9 @@
 # vim: set filetype=sh
 
+function conflict {
+  git st |grep both|awk '{print $3}'|xargs $EDITOR
+}
+
 function gr {
   git log origin/master..HEAD
 }
