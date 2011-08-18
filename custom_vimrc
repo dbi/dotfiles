@@ -99,6 +99,10 @@ set autoread
 
 " Autosave on lost focus
 autocmd FocusLost * silent! wall
+
+" CommandTFlush
+autocmd FocusGained * :CommandTFlush
+
 " Rails config
 autocmd User Rails set wildignore+=public/assets/**,vendor/**
 autocmd User Rails map <silent> <Leader>w m`:%s/\s\+$//<CR>``
