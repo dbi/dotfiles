@@ -23,6 +23,7 @@ map <Leader>n :FufBuffer<CR>
 map <Leader>b :b!#<CR>
 let g:fuf_buffer_keyDelete = '<C-x>'
 map <silent> å <C-]>
+map <silent> <leader><leader> :noh<CR>
 
 " convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
@@ -85,10 +86,10 @@ if exists("+showtabline")
 endif
 
 set showtabline=0
-set nohlsearch
 
 " Autosave on lost focus
 autocmd FocusLost * :wall
+set hlsearch
 
 " Share clipboard
 set clipboard=unnamed
