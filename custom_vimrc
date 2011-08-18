@@ -86,9 +86,6 @@ if exists("+showtabline")
 endif
 
 set showtabline=0
-
-" Autosave on lost focus
-autocmd FocusLost * :wall
 set hlsearch
 
 " Share clipboard
@@ -99,6 +96,9 @@ set wrap
 
 " Load changes from external applications
 set autoread
+
+" Autosave on lost focus
+autocmd FocusLost * silent! wall
 " Rails config
 autocmd User Rails set wildignore+=public/assets/**,vendor/**
 autocmd User Rails map <silent> <Leader>w m`:%s/\s\+$//<CR>``
