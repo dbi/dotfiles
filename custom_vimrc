@@ -97,6 +97,8 @@ set clipboard=unnamed
 " Word wrap
 set wrap
 
+" Load changes from external applications
+set autoread
 " Rails config
 autocmd User Rails set wildignore+=public/assets/**,vendor/**
 autocmd User Rails map <silent> <Leader>w m`:%s/\s\+$//<CR>``
