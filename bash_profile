@@ -1,3 +1,5 @@
+# vim: set filetype=sh
+
 function gr {
   git log origin/master..HEAD
 }
