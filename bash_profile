@@ -89,3 +89,6 @@ alias auf='AUTOFEATURE=true script/autospec'
 alias testreset='rake db:test:purge && rake db:test:prepare'
 alias rcup='rake --trace db:drop db:create db:migrate db:seed RAILS_ENV=cucumber'
 
+# Make it possible to send SIGQUIT on swedish keyboards (used in the rugy gem guard)
+stty quit "^R"
+
