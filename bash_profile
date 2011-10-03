@@ -4,10 +4,6 @@ function conflict {
   git st |grep both|awk '{print $3}'|xargs $EDITOR
 }
 
-function gr {
-  git log origin/master..HEAD
-}
-
 # http://railstips.org/blog/archives/2009/02/02/bedazzle-your-bash-prompt-with-git-info/
 function git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
@@ -44,8 +40,8 @@ NO_COLOUR="\[\033[0m\]"
 export PS1="$YELLOW\w$GREEN\$(parse_git_branch)$NO_COLOUR$ "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
-
 export EDITOR=vim
+export LESS="-r"
 
 # make bash autocomplete with up arrow/down arrow
 bind '"\e[A":history-search-backward'
@@ -102,10 +98,6 @@ alias rdr='rake db:rebuild'
 alias rtp='rake db:test:prepare'
 alias au='script/autospec'
 alias auf='AUTOFEATURE=true script/autospec'
-
-# brute force 'rake db:test:prepare', if you're using cucumber rails_env:
-alias testreset='rake db:test:purge && rake db:test:prepare'
-alias rcup='rake --trace db:drop db:create db:migrate db:seed RAILS_ENV=cucumber'
 
 # Make it possible to send SIGQUIT on swedish keyboards (used in the rugy gem guard)
 stty quit "^R"
