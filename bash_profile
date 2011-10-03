@@ -16,20 +16,32 @@ function git_branch {
   fi
 }
 
-function display_uncommon_user {
-  if [ $LOGNAME != "david.billskog" -a $LOGNAME != "billskog" -a $LOGNAME != "dbi" ]; then
-  	echo "$LOGNAME "
+# display current git branch and possibly git author
+function parse_git_branch {
+  BRANCH=$(git symbolic-ref HEAD 2> /dev/null | awk -F"/" '{ print $3 }')
+  if [ -z $GIT_AUTHOR_EMAIL ]; then
+    USER=$(git config --get user.email)
+  else
+    USER=$GIT_AUTHOR_EMAIL
+  fi
+  USER=${USER%%@*}
+  if [ $USER = "david.billskog" -o $USER = "billskog" ]; then
+    [[ $BRANCH ]] && echo " $BRANCH"
+  else
+    [[ $BRANCH ]] && echo " $USER@$BRANCH"
   fi
 }
 
-WHITE="\[\033[0;38m\]"
-RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 CYAN="\[\033[0;36m\]"
+BLUE="\[\033[0;34m\]"
+RED="\[\033[0;31m\]"
+LIGHT_RED="\[\033[1;31m\]"
+WHITE="\[\033[1;37m\]"
+NO_COLOUR="\[\033[0m\]"
 
-export PS1="$RED\$(display_uncommon_user)$YELLOW\w$GREEN\$(git_branch)$WHITE$ "
-
+export PS1="$YELLOW\w$GREEN\$(parse_git_branch)$NO_COLOUR$ "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 
