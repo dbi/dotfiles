@@ -1,9 +1,12 @@
+set nocompatible
+
 if has("gui_running")
   set guioptions=aAc " no scrollbars
   set guioptions-=T
   set guifont=Monaco:h13
   set fuoptions=maxvert,maxhorz
   colorscheme billskog
+  au GUIEnter * set fullscreen
 endif
 
 " http://vimcasts.org/episodes/show-invisibles/
@@ -15,12 +18,10 @@ map ö :
 
 let mapleader = " "
 
-" bind control-l to hashrocket
-imap <C-l> <Space>=><Space>
-
-map <Leader>t :CommandT<CR>
-map <Leader>n :FufBuffer<CR>
-map <Leader>b :b!#<CR>
+nmap <Leader>t :CommandT<CR>
+nmap <Leader>n :FufBuffer<CR>
+nmap <Leader>m :L9GrepBufferAll/
+nmap <Leader>b :b!#<CR>
 let g:fuf_buffer_keyDelete = '<C-x>'
 map <silent> å <C-]>
 map <silent> <leader><leader> :noh<CR>
@@ -37,12 +38,12 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 
 " Quickfix navigation
-map <silent> <Down> :cn<CR>
-map <silent> <Up> :cp<CR>
+map <silent> <Down> :cn<CR>zz
+map <silent> <Up> :cp<CR>zz
 map <silent> <Left> :copen<CR><C-w>J
 map <silent> <Right> :cclose<CR>
-map <silent> <C-Up> :cpf<CR>
-map <silent> <C-Down> :cnf<CR>
+map <silent> <C-Up> :cpf<CR>zz
+map <silent> <C-Down> :cnf<CR>zz
 
 " CommandT
 let g:CommandTMaxHeight=20
@@ -56,6 +57,8 @@ map <C-l> <C-w>l
 "Tabswitch shortcuts
 map <silent> <D-A-Left> :tabprevious<CR>
 map <silent> <D-A-Right> :tabnext<CR>
+imap <silent> <D-A-Left> :tabprevious<CR>
+imap <silent> <D-A-Right> :tabnext<CR>
 
 " Nice tabs
 if exists("+showtabline")
@@ -88,6 +91,12 @@ endif
 set showtabline=0
 set hlsearch
 
+au BufRead,BufNewFile *.html,*.erb,*.rhtml so ~/.vim/filetype/html.vim
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
 " Share clipboard
 set clipboard=unnamed
 
@@ -102,6 +111,15 @@ autocmd FocusLost * silent! wall
 
 " CommandTFlush
 autocmd FocusGained * :CommandTFlush
+
+" Auto remove fudgitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" Fudgitive goto parent directory
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
 
 " Rails config
 autocmd User Rails set wildignore+=public/assets/**,vendor/**,log/**
