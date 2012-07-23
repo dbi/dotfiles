@@ -90,7 +90,7 @@ alias e='mate `ls -Fa | grep -v .svn/ | grep -v .git/ | grep -v script/ | grep -
 alias er='mate README app/ config/ db/ lib/ public/ test/ spec/ vendor/plugins .gems '
 
 # Make it possible to send SIGQUIT on swedish keyboards (used in the rugy gem guard)
-stty quit "^R"
+# stty quit "^R"
 
 # Make less play nice with git
 export LESS="-F -X -R"
