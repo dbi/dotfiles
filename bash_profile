@@ -89,19 +89,6 @@ alias gco='git co'
 alias e='mate `ls -Fa | grep -v .svn/ | grep -v .git/ | grep -v script/ | grep -v .DS_Store | grep -v _site/ | grep -v log/ | grep -v tmp/ | grep -v vendor/ | grep -v "\./"`'
 alias er='mate README app/ config/ db/ lib/ public/ test/ spec/ vendor/plugins .gems '
 
-# Rails
-alias r='rails'
-alias ss='script/server'
-alias sc='script/console'
-alias sg='script/generate'
-alias sp='script/spec --color --loadby mtime --reverse'
-alias rdm='rake db:migrate'
-alias rdp='rake db:prepare'
-alias rdr='rake db:rebuild'
-alias rtp='rake db:test:prepare'
-alias au='script/autospec'
-alias auf='AUTOFEATURE=true script/autospec'
-
 # Make it possible to send SIGQUIT on swedish keyboards (used in the rugy gem guard)
 stty quit "^R"
 
