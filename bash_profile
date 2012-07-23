@@ -22,9 +22,9 @@ function parse_git_branch {
   fi
   USER=${USER%%@*}
   if [ $USER = "david.billskog" -o $USER = "billskog" ]; then
-    [[ $BRANCH ]] && echo " $BRANCH"
+    [[ $BRANCH ]] && echo "$BRANCH "
   else
-    [[ $BRANCH ]] && echo " $USER@$BRANCH"
+    [[ $BRANCH ]] && echo "$USER@$BRANCH "
   fi
 }
 
@@ -37,7 +37,7 @@ LIGHT_RED="\[\033[1;31m\]"
 WHITE="\[\033[1;37m\]"
 NO_COLOUR="\[\033[0m\]"
 
-export PS1="$YELLOW\w$GREEN\$(parse_git_branch)$NO_COLOUR$ "
+export PS1="$YELLOW\w$GREEN \$(parse_git_branch)$NO_COLOUR$ "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 export EDITOR=vim
