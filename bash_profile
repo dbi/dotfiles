@@ -92,3 +92,5 @@ alias er='mate README app/ config/ db/ lib/ public/ test/ spec/ vendor/plugins .
 # Make it possible to send SIGQUIT on swedish keyboards (used in the rugy gem guard)
 stty quit "^R"
 
+# Make less play nice with git
+export LESS="-F -X -R"
