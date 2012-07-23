@@ -65,6 +65,7 @@ alias safari="open -a /Applications/Safari.app/"
 alias firefox="open -a /Applications/Firefox.app/"
 alias gitx="open -a GitX ."
 alias t="term -t"
+alias gitbr='for k in `git branch|perl -pe s/^..//`;do echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k|head -n 1`\\t$k;done|sort -r'
 
 # common
 alias cp='cp -i'
