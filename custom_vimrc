@@ -24,7 +24,8 @@ nmap <Leader>m :L9GrepBufferAll/
 nmap <Leader>b :b!#<CR>
 let g:fuf_buffer_keyDelete = '<C-x>'
 map <silent> å <C-]>
-map <silent> <leader><leader> :noh<CR>
+" map <silent> <leader><leader> :noh<CR>
+map <silent> <leader>c :noh<CR>
 
 " convert word into ruby symbol
 imap <C-k> <C-o>b:<Esc>Ea
