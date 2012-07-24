@@ -38,3 +38,6 @@ echo "  http://discussions.apple.com/thread.jspa?threadID=2122639&start=15&tstar
 # speed this up you can change the speed at which is renders so it appears almost
 # instantly. The default is 0.2.
 # defaults write NSGlobalDomain NSWindowResizeTime 0.01
+
+# Lion
+# http://www.yllier.net/SUFSA.html
