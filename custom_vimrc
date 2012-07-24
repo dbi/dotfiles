@@ -45,6 +45,9 @@ map <silent> <Right> :cclose<CR>
 map <silent> <C-Up> :cpf<CR>zz
 map <silent> <C-Down> :cnf<CR>zz
 
+" jannes macro för att peka ut fil och rad
+nmap <Leader>l O<Esc>"%pA:<C-R>=line(".")<CR><Esc>0d$"_dd
+
 " CommandT
 let g:CommandTMaxHeight=20
 
