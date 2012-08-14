@@ -52,19 +52,11 @@ bind "set completion-ignore-case on"
 bind "set bell-style none" # No bell, because it's damn annoying
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
-# vim bindings in bash
-#set -o vi
-
-# git stuff http://www.benmabey.com/2008/05/07/git-bash-completion-git-aliases/
-source ~/.dotfiles/autocomplete/git-completion.bash
-complete -o default -o nospace -F _git_checkout gco
-
 alias grep="grep --color=auto"
 alias preview="open -a /Applications/Preview.app/"
 alias safari="open -a /Applications/Safari.app/"
 alias firefox="open -a /Applications/Firefox.app/"
 alias gitx="open -a GitX ."
-alias t="term -t"
 alias ttr="touch tmp/restart.txt"
 alias testbot="bundle exec rake testbot:rspec 2>&1 | tee /tmp/output.txt | grep \"^\(Finished.*\.$\|rspec\|\d\+ examples\)\""
 alias gitbr='for k in `git branch|perl -pe s/^..//`;do echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k|head -n 1`\\t$k;done|sort -r'
@@ -82,12 +74,7 @@ alias ps?='ps ax | grep '
 alias fn='find . -name'
 alias hi='history | tail -20'
 alias du1='du -h -d 1'
-alias sd='svn diff > /tmp/svn.diff;mate /tmp/svn.diff'
 alias gco='git co'
-
-# open Textmate with only the dirs we normally want to work with
-alias e='mate `ls -Fa | grep -v .svn/ | grep -v .git/ | grep -v script/ | grep -v .DS_Store | grep -v _site/ | grep -v log/ | grep -v tmp/ | grep -v vendor/ | grep -v "\./"`'
-alias er='mate README app/ config/ db/ lib/ public/ test/ spec/ vendor/plugins .gems '
 
 # Make it possible to send SIGQUIT on swedish keyboards (used in the rugy gem guard)
 # stty quit "^R"
