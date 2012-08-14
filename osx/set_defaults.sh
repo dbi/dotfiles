@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
-echo "[ok] Hide dock in lower right corner." # Dock need to be running if you want exposé and spaces.
+echo " * Hide dock in lower right corner" # Dock need to be running if you want exposé and spaces.
 defaults write com.apple.dock autohide -boolean true
 defaults write com.apple.Dock orientation -string top
 defaults write com.apple.dock tilesize -int 1
 defaults write com.apple.dock pinning -string end
 
-echo "[ok] Disable spaces animation"
-defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
-killall Dock
+echo " * Diable dashboard"
+defaults write com.apple.dashboard mcx-disabled -boolean YES
 
-echo "[ok] Maximize windows with ctrl+cmd+Z and disable cmd+Q for Terminal.app"
-defaults write NSGlobalDomain NSUserKeyEquivalents '{"Quit Terminal" = "@$Q";"Zoom" = "@^Z";"Zoom Window" = "@^Z";}'
+echo " * Disable spaces animation" # http://www.macworld.com/article/1046236/disabledashboard.html
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
+
+killall Dock
 
 echo
 echo Other configruation suggestions
@@ -38,6 +39,3 @@ echo "  http://discussions.apple.com/thread.jspa?threadID=2122639&start=15&tstar
 # speed this up you can change the speed at which is renders so it appears almost
 # instantly. The default is 0.2.
 # defaults write NSGlobalDomain NSWindowResizeTime 0.01
-
-# Lion
-# http://www.yllier.net/SUFSA.html
