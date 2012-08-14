@@ -8,7 +8,7 @@ function conflict {
 function git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [ ref ]; then
-    echo " "${ref#refs/heads/}""
+    echo ""${ref#refs/heads/}""
   fi
 }
 
@@ -37,7 +37,7 @@ LIGHT_RED="\[\033[1;31m\]"
 WHITE="\[\033[1;37m\]"
 NO_COLOUR="\[\033[0m\]"
 
-export PS1="$YELLOW\w$GREEN \$(parse_git_branch)$NO_COLOUR$ "
+export PS1="$YELLOW\w$GREEN \$(git_branch)$NO_COLOUR$ "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 export EDITOR=vim
