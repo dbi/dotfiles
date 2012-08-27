@@ -14,6 +14,12 @@ defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
 
 killall Dock
 
+echo " * Command+D to not save a document" # http://osxdaily.com/2011/08/15/return-the-dont-save-keyboard-shortcut-to-commandd-in-mac-os-x-lion/
+defaults write NSGlobalDomain NSSavePanelStandardDesktopShortcutOnly -bool YES
+
+echo " * Disable spelling autocorrect"
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool NO
+
 echo
 echo Other configruation suggestions
 echo ===============================
