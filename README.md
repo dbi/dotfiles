@@ -10,4 +10,5 @@ This project was made to make it easy to install my mac configruation on a new c
     ln -s ~/.dotfiles/rvmrc ~/.rvmrc
     ln -s ~/.dotfiles/irbrc ~/.irbrc
     ln -s ~/.dotfiles/gemrc ~/.gemrc
+    ln -s ~/.dotfiles/screenrc ~/.screenrc
     touch ~/.bash_profile && echo "source ~/.dotfiles/bash_profile" >> ~/.bash_profile

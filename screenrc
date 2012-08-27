@@ -1,0 +1,29 @@
+# Bigger scrollback buffer
+defscrollback 10000
+
+# No startup message
+startup_message off
+
+# Status line
+#hardstatus alwayslastline "%{= .w} %-Lw%{=b kR} %n%f %t %{-}%+Lw %=%{= dd}"
+hardstatus alwayslastline "%{= .w} %-Lw%{=b kR}%n %t%f %{-}%+Lw %{= dd}"
+
+# Title
+shelltitle "$ |bash"
+
+# Do not wait after Escape (annoying in vim)
+maptimeout 0
+
+# Resize split screen
+bind = resize =
+bind + resize +5
+bind - resize -5
+bind _ resize max
+bind n next
+bind p prev
+bind s split
+
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+term screen-256color-bce
