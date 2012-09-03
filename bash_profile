@@ -12,22 +12,6 @@ function git_branch {
   fi
 }
 
-# display current git branch and possibly git author
-function parse_git_branch {
-  BRANCH=$(git symbolic-ref HEAD 2> /dev/null | awk -F"/" '{ print $3 }')
-  if [ -z $GIT_AUTHOR_EMAIL ]; then
-    USER=$(git config --get user.email)
-  else
-    USER=$GIT_AUTHOR_EMAIL
-  fi
-  USER=${USER%%@*}
-  if [ $USER = "david.billskog" -o $USER = "billskog" ]; then
-    [[ $BRANCH ]] && echo "$BRANCH "
-  else
-    [[ $BRANCH ]] && echo "$USER@$BRANCH "
-  fi
-}
-
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 CYAN="\[\033[0;36m\]"
@@ -41,7 +25,6 @@ export PS1="$YELLOW\w$GREEN \$(git_branch)$NO_COLOUR$ "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 export EDITOR=vim
-export LESS="-r"
 
 # make bash autocomplete with up arrow/down arrow
 bind '"\e[A":history-search-backward'
@@ -69,15 +52,12 @@ alias l='ls -GlAhF'
 alias ll='ls -GlAhFtr'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ?='echo $?'
+alias ....='cd ../../..'
 alias ps?='ps ax | grep '
 alias fn='find . -name'
 alias hi='history | tail -20'
 alias du1='du -h -d 1'
 alias gco='git co'
-
-# Make it possible to send SIGQUIT on swedish keyboards (used in the rugy gem guard)
-# stty quit "^R"
 
 # Make less play nice with git
 export LESS="-F -X -R"
