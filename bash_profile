@@ -6,9 +6,9 @@ function conflict {
 
 # http://railstips.org/blog/archives/2009/02/02/bedazzle-your-bash-prompt-with-git-info/
 function git_branch {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [ ref ]; then
-    echo ""${ref#refs/heads/}""
+  ref=$(git symbolic-ref --short HEAD 2> /dev/null)
+  if [ $? -eq 0 ]; then
+    echo " "${ref}""
   fi
 }
 
