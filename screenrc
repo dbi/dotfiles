@@ -1,4 +1,4 @@
-shell -bash
+shell -$SHELL
 
 # Bigger scrollback buffer
 defscrollback 10000
