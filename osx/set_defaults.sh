@@ -20,6 +20,9 @@ defaults write NSGlobalDomain NSSavePanelStandardDesktopShortcutOnly -bool YES
 echo " * Disable spelling autocorrect"
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool NO
 
+echo " * Diable native fullscreen for MacVim"
+defaults write org.vim.MacVim MMNativeFullScreen 0
+
 echo
 echo Other configruation suggestions
 echo ===============================
