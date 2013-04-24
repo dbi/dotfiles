@@ -56,3 +56,6 @@ alias gco='git co'
 
 # Make less play nice with git
 export LESS="-F -X -R"
+
+# Git autocomplete
+complete -o default -o nospace -F _git g
