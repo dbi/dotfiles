@@ -8,6 +8,13 @@ function git_branch {
   fi
 }
 
+function hitch_pair {
+  source ~/.hitch_export_authors
+  if [ `git symbolic-ref HEAD 2> /dev/null` ] && [ -n "${GIT_AUTHOR_EMAIL:+1}" ]; then
+    echo $GIT_AUTHOR_EMAIL|awk -F "[+@]" '{ print " "$2"+"$3 }'
+  fi
+}
+
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 CYAN="\[\033[0;36m\]"
@@ -15,9 +22,24 @@ BLUE="\[\033[0;34m\]"
 RED="\[\033[0;31m\]"
 LIGHT_RED="\[\033[1;31m\]"
 WHITE="\[\033[1;37m\]"
+DARK_GRAY="\[\033[1;30m\]"
+GRAY="\[\033[0;37m\]"
 NO_COLOUR="\[\033[0m\]"
+YELLOW_GREEN="\[\033[38;5;148m\]"
 
-export PS1="$YELLOW\w$GREEN \$(git_branch)$NO_COLOUR$ "
+# Orange/brown/yellow set
+COL1="\[\033[38;5;130m\]"
+COL2="\[\033[38;5;172m\]"
+COL3="\[\033[38;5;178m\]"
+COL4="\[\033[38;5;220m\]"
+
+# Yellow/green set
+COL1="\[\033[38;5;136m\]"
+COL2="\[\033[38;5;3m\]"
+COL3="\[\033[38;5;112m\]"
+COL4="\[\033[38;5;2m\]"
+
+export PS1="$COL1\A $COL2\w$COL3\$(git_branch)$COL4\$(hitch_pair)$NO_COLOUR "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 export EDITOR=vim
