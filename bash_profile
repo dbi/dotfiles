@@ -1,9 +1,5 @@
 # vim: set filetype=sh
 
-function conflict {
-  git st |grep both|awk '{print $3}'|xargs $EDITOR
-}
-
 # http://railstips.org/blog/archives/2009/02/02/bedazzle-your-bash-prompt-with-git-info/
 function git_branch {
   ref=$(git symbolic-ref --short HEAD 2> /dev/null)
@@ -55,7 +51,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ps?='ps ax | grep '
 alias fn='find . -name'
-alias hi='history | tail -20'
 alias du1='du -h -d 1'
 alias gco='git co'
 

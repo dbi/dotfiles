@@ -7,11 +7,7 @@ defscrollback 10000
 startup_message off
 
 # Status line
-#hardstatus alwayslastline "%{= .w} %-Lw%{=b kR} %n%f %t %{-}%+Lw %=%{= dd}"
 hardstatus alwayslastline "%{= .w} %-Lw%{=b kR}%n %t%f %{-}%+Lw %{= dd}"
-
-# Title
-shelltitle "$ |bash"
 
 # Do not wait after Escape (annoying in vim)
 maptimeout 0

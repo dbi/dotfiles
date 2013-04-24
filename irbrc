@@ -79,15 +79,6 @@ rescue LoadError => err
   warn "Couldn't load Looksee: #{err}"
 end
 
-# Interactive Editor https://github.com/jberkel/interactive_editor
-#
-#   vim
-begin
-  require 'interactive_editor'
-rescue LoadError => err
-  warn "Couldn't load interactive_editor: #{err}"
-end
-
 # Copy string to clipboard
 #
 #   copy "hello"
