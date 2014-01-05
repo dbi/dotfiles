@@ -6,7 +6,6 @@ This project was made to make it easy to install my mac configruation on a new c
 
     ln -s ~/whereeveryouputit ~/.dotfiles
     ln -s ~/.dotfiles/gitignore ~/.gitignore
-    ln -s ~/.dotfiles/railsrc ~/.railsrc
     ln -s ~/.dotfiles/rvmrc ~/.rvmrc
     ln -s ~/.dotfiles/irbrc ~/.irbrc
     ln -s ~/.dotfiles/gemrc ~/.gemrc
