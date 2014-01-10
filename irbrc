@@ -3,13 +3,6 @@ require "rubygems"
 puts "#{RUBY_VERSION} p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) #{RUBY_PLATFORM}"
 IRB.conf[:PROMPT_MODE] = :DEFAULT
 
-# Hack to load gems outside of bundler
-#
-# https://gist.github.com/794915
-if defined?(::Bundler)
-  $LOAD_PATH.concat Dir.glob("#{ENV['rvm_ruby_global_gems_path']}/gems/*/lib")
-end
-
 # Quick and dirty benchmarking
 #
 #   quick(10) { sleep 0.1 }
@@ -29,45 +22,6 @@ def measure_time
   result = yield
   puts sprintf "Total: %.2fs", Time.now - start
   result
-end
-
-# Wirble https://github.com/blackwinter/wirble
-begin
-  require 'wirble'
-  Wirble.init
-
-  colors = Wirble::Colorize.colors.merge({
-    :comma              => :light_gray,
-    :refers             => :light_gray,
-
-    :open_hash          => :light_gray,
-    :close_hash         => :light_gray,
-    :open_array         => :light_gray,
-    :close_array        => :light_gray,
-
-    :open_object        => :blue,
-    :object_class       => :purple,
-    :object_addr_prefix => :blue,
-    :object_line_prefix => :blue,
-    :close_object       => :blue,
-
-    :symbol             => :yellow,
-    :symbol_prefix      => :yellow,
-
-    :open_string        => :dark_gray,
-    :string             => :yellow,
-    :close_string       => :dark_gray,
-
-    :number             => :cyan,
-    :keyword            => :green,
-    :class              => :green,
-    :range              => :red,
-  })
-
-  Wirble::Colorize.colors = colors
-  Wirble.colorize
-rescue LoadError => err
-  warn "Couldn't load Wirble: #{err}"
 end
 
 # Method lookup http://github.com/oggy/looksee
