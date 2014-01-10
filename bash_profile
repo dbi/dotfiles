@@ -15,6 +15,10 @@ function hitch_pair {
   fi
 }
 
+function jsonf {
+  python -mjson.tool
+}
+
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 CYAN="\[\033[0;36m\]"
