@@ -31,6 +31,10 @@ GRAY="\[\033[0;37m\]"
 NO_COLOUR="\[\033[0m\]"
 YELLOW_GREEN="\[\033[38;5;148m\]"
 
+# for((color=1;color<=255;color++)); do
+#   echo -e "\033[38;5;${color}mCOLOR ${color}\033[39m"
+# done
+
 # Orange/brown/yellow set
 COL1="\[\033[38;5;130m\]"
 COL2="\[\033[38;5;172m\]"
