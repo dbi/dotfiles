@@ -55,12 +55,8 @@ bind "set bell-style none" # No bell, because it's damn annoying
 bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
 alias grep="grep --color=auto"
-alias preview="open -a /Applications/Preview.app/"
-alias safari="open -a /Applications/Safari.app/"
-alias firefox="open -a /Applications/Firefox.app/"
 alias gitx="open -a GitX ."
 alias ttr="touch tmp/restart.txt"
-alias testbot="bundle exec rake testbot:rspec 2>&1 | tee /tmp/output.txt | grep \"^\(Finished.*\.$\|rspec\|\d\+ examples\)\""
 alias gitbr='for k in `git branch|perl -pe s/^..//`;do echo -e `git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k|head -n 1`\\t$k;done|sort -r'
 
 # common
