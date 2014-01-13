@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+#Disable window animations
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+defaults write com.apple.dock expose-animation-duration -int 0
+
 echo " * Hide dock in lower right corner" # Dock need to be running if you want exposé and spaces.
 defaults write com.apple.dock autohide -boolean true
 defaults write com.apple.Dock orientation -string top
