@@ -40,7 +40,7 @@ COL2="\[\033[38;5;3m\]"
 COL3="\[\033[38;5;112m\]"
 COL4="\[\033[38;5;2m\]"
 
-export PS1="$COL1\A $COL2\w$COL3\$(git_branch)$NO_COLOUR "
+export PS1=" $COL2\w$COL3\$(git_branch)$NO_COLOUR "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 export EDITOR=vim
