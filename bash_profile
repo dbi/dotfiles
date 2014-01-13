@@ -8,13 +8,6 @@ function git_branch {
   fi
 }
 
-function hitch_pair {
-  source ~/.hitch_export_authors
-  if [ `git symbolic-ref HEAD 2> /dev/null` ] && [ -n "${GIT_AUTHOR_EMAIL:+1}" ]; then
-    echo $GIT_AUTHOR_EMAIL|awk -F "[+@]" '{ print " "$2"+"$3 }'
-  fi
-}
-
 function jsonf {
   python -mjson.tool
 }
@@ -47,7 +40,7 @@ COL2="\[\033[38;5;3m\]"
 COL3="\[\033[38;5;112m\]"
 COL4="\[\033[38;5;2m\]"
 
-export PS1="$COL1\A $COL2\w$COL3\$(git_branch)$COL4\$(hitch_pair)$NO_COLOUR "
+export PS1="$COL1\A $COL2\w$COL3\$(git_branch)$NO_COLOUR "
 export CLICOLOR='true'
 export LSCOLORS=fxgxcxdxbxegedabagacfx
 export EDITOR=vim
